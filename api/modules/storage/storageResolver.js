@@ -48,13 +48,16 @@ const resolvers = {
                     storage.private = true;
                 }
                 const storageType = storage.type.toLowerCase();
+
+                // code was commented out to disable decryption for demo purposes
+
                 // based on the storage type I'm getting the password/secretKey
                 // decrypting the secret and setting the value in the correct key depending on the storageType
-                if (storage?.credentials?.encrypted) {
-                    const secret = storageType === 'sftp' ? storage.credentials.password : storage.credentials.secretKey;
-                    const decryptedSecret = await dataSources.CountersAPI.encryptAndDecryptStorage('decrypt', secret)
-                    storageType === 'sftp' ? storage.credentials.password = decryptedSecret : storage.credentials.secretKey = decryptedSecret
-                }
+                // if (storage?.credentials?.encrypted) {
+                //     const secret = storageType === 'sftp' ? storage.credentials.password : storage.credentials.secretKey;
+                //     const decryptedSecret = await dataSources.CountersAPI.encryptAndDecryptStorage('decrypt', secret)
+                //     storageType === 'sftp' ? storage.credentials.password = decryptedSecret : storage.credentials.secretKey = decryptedSecret
+                // }
 
                 console.log(`${user.email} opened storage_${id}`)
                 return storage
@@ -90,7 +93,9 @@ const resolvers = {
             } else if (type === 's3cmd') {
                 secretToEncrypt = secretKey
             } else secretToEncrypt = null;
-
+            
+            //This line was added to disable encryption for demo purposes.
+            secretToEncrypt=false;
 
             const credentials = {
                 serverUrl,
@@ -156,12 +161,12 @@ const resolvers = {
                     uploadDirectory,
                     serverPort
                 }
-
-                if (originalStorageDoc.credentials.encrypted) {
-                    const secret = type === 'sftp' ? credentials.password : credentials.secretKey;
-                    const encryptedSecret = await dataSources.CountersAPI.encryptAndDecryptStorage('encrypt', secret)
-                    type === 'sftp' ? credentials.password = encryptedSecret : credentials.secretKey = encryptedSecret
-                }
+                //This code was commented out to disable encryption for demo purposes.
+                // if (originalStorageDoc.credentials.encrypted) {
+                //     const secret = type === 'sftp' ? credentials.password : credentials.secretKey;
+                //     const encryptedSecret = await dataSources.CountersAPI.encryptAndDecryptStorage('encrypt', secret)
+                //     type === 'sftp' ? credentials.password = encryptedSecret : credentials.secretKey = encryptedSecret
+                // }
 
 
                 let newStorageObject = storageTemplate(originalStorageDoc, accountId, type, name, credentials, decryption, webAccessUrl)

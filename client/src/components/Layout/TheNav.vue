@@ -84,7 +84,7 @@
                     <span class="link-text">Landing Pages</span>
                 </router-link>
             </li>
-            <li class="nav-item" v-if="permissions?.aiads?.read">
+            <!-- <li class="nav-item" v-if="permissions?.aiads?.read">
                 <router-link class="nav-link" to="/aiads" draggable="false">
                     <SvgIcon>
                         <svg
@@ -93,7 +93,6 @@
                             height="1em"
                             viewBox="0 0 24 24"
                         >
-                            <!-- Icon from All by undefined - undefined -->
                             <g
                                 fill="none"
                                 stroke="currentColor"
@@ -113,7 +112,7 @@
                     </SvgIcon>
                     <span class="link-text">AI Ads</span>
                 </router-link>
-            </li>
+             </li> -->
             <li class="nav-item" v-if="permissions?.tools?.read">
                 <router-link class="nav-link" to="/tools" draggable="false">
                     <SvgIcon>

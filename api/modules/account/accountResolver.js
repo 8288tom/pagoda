@@ -171,6 +171,7 @@ const resolvers = {
         updateCredits: async (_, args, { dataSources, user }) => {
             const isAuthorized = checkPermissions(user.email, user.permissions, 'accounts', 'write');
             if (!isAuthorized) throw new ApolloError('User is not authorized', 403)
+            throw new ApolloError("CREDITS UPDATE DISABLED FOR DEMO")
 
             const { _id, region = 'us', newCredits: newCreditsValue, creditsThreshold } = args.input
 

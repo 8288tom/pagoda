@@ -41,6 +41,7 @@ const resolvers = {
         copyOutputConfig: async (_, { _id, newOwner, newName }, { dataSources, user }) => {
             const isAuthorized = checkPermissions(user.email, user.permissions, 'outputconfigs', 'write');
             if (!isAuthorized) throw new ApolloError('User is not authorized', 403)
+
             const copySubject = await dataSources.MongoDB.db.collection('output_config').findOne({ _id });
             if (!copySubject) {
                 return responseHandler(false, `Output_config_${_id} was not found.`)
@@ -62,7 +63,7 @@ const resolvers = {
         createOutputConfig: async (_, { accountId, input }, { dataSources, user }) => {
             const isAuthorized = checkPermissions(user.email, user.permissions, 'outputconfigs', 'write');
             if (!isAuthorized) throw new ApolloError('User is not authorized', 403)
-
+            throw new ApolloError('OUTPUT CONFIG CREATION DISABLED FOR DEMO', 403)
             try {
                 const response = await dataSources.MetadataAPI.createOutputConfig(accountId, input)
                 console.log(`${user.email} created a new Output Config ID:${response?.output_config_id}`)

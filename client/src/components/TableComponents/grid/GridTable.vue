@@ -100,10 +100,13 @@
             @refetchList="handleFormChange"
         />
     </TableDialog>
+    <GitSvgLink style="margin:auto;" text="You can see the frontend code by clicking the logo! ---->" link="https://github.com/8288tom/pagoda/tree/main/client/src/components/TableComponents"></GitSvgLink>
+
 </template>
 
 <script>
 import { ref, computed, onUnmounted, onMounted, onBeforeUnmount } from "vue";
+import GitSvgLink from "@/components/misc/GitSvgLink.vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { Grid } from "@progress/kendo-vue-grid";
@@ -150,6 +153,7 @@ export default {
         KInput: Input,
         SvgIcon,
         Checkbox,
+        GitSvgLink,
         KButton,
         TableActionButtons,
         TableDialog,
@@ -498,6 +502,7 @@ export default {
             areButtonsClickable,
             arrowRotateCcwIcon,
             refreshItems,
+            GitSvgLink
         };
     },
 };

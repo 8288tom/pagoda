@@ -1,6 +1,7 @@
 <template>
   <Card class="audio-to-text-card shadow">
-    <CardTitle>Audio To Text</CardTitle>
+    <CardTitle>Audio To Text     
+    </CardTitle>
     <CardBody>
       <ComboBox
         :data-items="languages"
@@ -72,12 +73,15 @@
           >here.</a
         >
       </span>
+      <br>
+      <GitSvgLink class="svg" text="Click the logo to see the component's backend code!" link="https://github.com/8288tom/pagoda/blob/main/api/modules/tools/toolsResolver.js"></GitSvgLink>
     </CardSubtitle>
   </Card>
 </template>
 
 <script setup>
 import { Card, CardTitle, CardBody, CardSubtitle } from "@progress/kendo-vue-layout";
+import GitSvgLink from "../misc/GitSvgLink.vue";
 import { Upload } from "@progress/kendo-vue-upload";
 import { ref, computed } from "vue";
 import { useApolloClient } from "@vue/apollo-composable";
@@ -270,7 +274,11 @@ const isUploadDisabled = computed(() => {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.svg{
+    padding-left:15px;
 
+  }
+  
 .errors {
   color: var(--alert-500);
   flex-direction: column;
@@ -290,5 +298,6 @@ const isUploadDisabled = computed(() => {
       text-overflow: ellipsis;
     }
   }
+
 }
 </style>

@@ -225,7 +225,7 @@ export default {
         isLoading.value = false;
       } catch (e) {
         isLoading.value = false;
-        showNotification(store, false, undefined, `Error deleting user ${e.message}`);
+        showNotification(store, false, undefined, e.message);
       }
     }
 
@@ -259,7 +259,7 @@ export default {
       } catch (e) {
         isLoading.value = false;
         console.error("Error submitting form", e);
-        showNotification(store, false, undefined, `Error submitting form ${e.message}`);
+        showNotification(store, false, undefined, `${e.message}`);
       }
     }
     async function getUsers() {

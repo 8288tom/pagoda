@@ -1,8 +1,5 @@
 <template>
   <the-header>
-    <template v-slot:theme>
-      <SvgIcon @click="changeTheme" :icon="dataIcon"></SvgIcon>
-    </template>
   </the-header>
   <the-nav></the-nav>
   <main>
@@ -14,8 +11,6 @@
 <script setup>
 import TheHeader from "@/components/Layout/TheHeader";
 import TheNav from "@/components/Layout/TheNav";
-import { SvgIcon } from "@progress/kendo-vue-common";
-import { dataIcon } from "@progress/kendo-svg-icons";
 import { computed } from "vue";
 import { useStore } from "vuex";
 const store = useStore();

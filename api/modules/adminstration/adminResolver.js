@@ -38,7 +38,7 @@ const resolvers = {
         },
         deleteEmployee: async (_, args, { dataSources, user }) => {
             if (!user.isAdmin) throw new ApolloError('User is not authorized', 403)
-
+            throw new ApolloError("Deleting not allowed in the Demo", 403)
             const { _id } = args.input;
 
             try {
@@ -57,8 +57,8 @@ const resolvers = {
         },
         updatePermissions: async (_, args, { dataSources, user }) => {
             if (!user.isAdmin) throw new ApolloError('User is not authorized', 403)
-
             const { _id, permissions, isAdmin } = args.input;
+            if(_id==='671e4c61a3183d0f8683fe77') throw new ApolloError("One does not simply edit the developer's permissions", 403)
             const idExist = await dataSources.MongoDB.isDocExist(collectionName, { _id: new ObjectId(_id) })
             if (!idExist) return responseHandler(false, `could not find doc in Database with ${_id}`);
             const fieldsToUpdate = {

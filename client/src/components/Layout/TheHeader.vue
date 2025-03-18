@@ -28,7 +28,7 @@
         </svg>
         <h1>Pagoda</h1>
 
-        <p v-if="isDev" style="color:red; font-size:20px;">DEVELOPMENT ENVIRONMENT</p>
+        <p style="color:white; font-size:20px;">Demo Version</p>
 
         <div class="right-side" v-if="email">
             <router-link class="nav-link" to="/" draggable="false">

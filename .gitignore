@@ -53,4 +53,4 @@ git-commands.sh
 kendo-ui-license.txt
 .serverless
 /api/serverless.yml
-
+/scripts

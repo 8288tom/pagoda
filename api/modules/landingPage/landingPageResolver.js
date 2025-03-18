@@ -46,6 +46,7 @@ const resolvers = {
         copyLandingPage: async (_, args, { dataSources, user }) => {
             const isAuthorized = checkPermissions(user.email, user.permissions, 'landingpages', 'write');
             if (!isAuthorized) throw new ApolloError('User is not authorized', 403)
+            throw new ApolloError('COPY LP DISABLED FOR DEMO', 403)
             const { _id, accountIdToCopy, workspaceId } = args.input;
             const newPublishedPageKey = makeId(8);
             const bucket = "idomoo.cloud"

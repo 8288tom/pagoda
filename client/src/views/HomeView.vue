@@ -38,7 +38,20 @@
           </div>
         </Card>
       </template>
+      <Card>
+        <CardHeader>
+          <h3>Since this is a Demo, I cannot show real environment data, therefore, I've captured a short gif showing what this component looked like in Production:
+        </h3>
+        </CardHeader>
+       <CardBody>
+          <img  class="gif" src="/elastic_example_gif.gif" alt="example_gif">
+       </CardBody>
+        <GitSvgLink style="margin:auto;" text="You can see the frontend code by clicking the logo! ---->" link="https://github.com/8288tom/pagoda/blob/main/client/src/views/HomeView.vue"></GitSvgLink>
+      </Card>
+
+      
     </div>
+
   </div>
 </template>
 
@@ -54,6 +67,7 @@ import DonutChart from "@/components/HomeComponents/DonutChart.vue";
 import PieChart from "@/components/HomeComponents/PieChart.vue";
 import queries from "@/utils/queries";
 import { initApp } from "@/utils/contextHelpers";
+import GitSvgLink from "@/components/misc/GitSvgLink.vue";
 import { useStore } from "vuex";
 import {
   thumbnailsLeftIcon,
@@ -92,25 +106,25 @@ const collectionMap = {
 
 // Queries
 const initQuery = queries.home.initapp;
-const elasticQuery = queries.home.getelasticresults;
+// const elasticQuery = queries.home.getelasticresults;
 
 // Fetch Elastic data for a given environment
-async function fetchElasticData(env) {
-  try {
-    const { data } = await apolloClient.query({ query: elasticQuery, variables: { env } });
-    if (data) {
-      env === "us" ? (elasticResultUS.value = data.getElasticResults) : (elasticResultEU.value = data.getElasticResults);
-    }
-  } catch (e) {
-    console.error(`Failed fetching Elastic data for ${env.toUpperCase()}`, e);
-  }
-}
+// async function fetchElasticData(env) {
+//   try {
+//     const { data } = await apolloClient.query({ query: elasticQuery, variables: { env } });
+//     if (data) {
+//       env === "us" ? (elasticResultUS.value = data.getElasticResults) : (elasticResultEU.value = data.getElasticResults);
+//     }
+//   } catch (e) {
+//     console.error(`Failed fetching Elastic data for ${env.toUpperCase()}`, e);
+//   }
+// }
 
 onMounted(async () => {
   try {
     isLoading.value = true;
     await Promise.all([
-      fetchElasticData("us"),
+      // fetchElasticData("us"),
       // fetchElasticData("eu"),
       initApp(store, apolloClient, initQuery),
     ]);
@@ -176,7 +190,7 @@ const formattedCollectionCount = computed(() => {
 });
 
 const shouldRenderCollections = computed(() => collectionsItems.value.length > 0);
-const shouldRenderEnvTitle = computed(() => shouldRenderCharts('US'))
+const shouldRenderEnvTitle = computed(() => true)
 </script>
 
 <style scoped>
@@ -245,5 +259,9 @@ h3,
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.gif{
+  width:75%;
+
 }
 </style>

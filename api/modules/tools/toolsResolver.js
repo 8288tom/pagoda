@@ -13,6 +13,8 @@ const resolvers = {
         getUploadUrls: async (_, { filenames }, { dataSources, user }) => {
             const isAuthorized = checkPermissions(user.email, user.permissions, 'tools', 'write');
             if (!isAuthorized) throw new ApolloError('User is not authorized', 403)
+            throw new ApolloError('TRANSCRIPTION DISABLED FOR DEMO', 403)
+
             const urlsPromises = []
 
             const folderHash = uuidv4();
@@ -53,6 +55,8 @@ const resolvers = {
         transcribeAudios: async (_, { input }, { dataSources, user }) => {
             const isAuthorized = checkPermissions(user.email, user.permissions, 'tools', 'write');
             if (!isAuthorized) throw new ApolloError('User is not authorized', 403)
+            throw new ApolloError('TRANSCRIPTION DISABLED FOR DEMO', 403)
+
 
             const { s3folder, lang } = input;
 

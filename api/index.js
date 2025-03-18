@@ -14,8 +14,21 @@ const client = new MongoClient(process.env.MONGO_STRING);
 
 const context = async ({ event }) => {
     try {
-        // console.log("requestContext:", event.requestContext)
-        const { user } = event.requestContext.authorizer.lambda;
+        const user = {
+            email: 'tom.shaked@idomoo.com',
+            isAdmin: true,
+            permissions: [
+                { name: 'accounts', read: true, write: true },
+                { name: 'users', read: true, write: true },
+                { name: 'storyboards', read: true, write: true },
+                { name: 'scenelibraries', read: true, write: true },
+                { name: 'storages', read: true, write: true },
+                { name: 'outputconfigs', read: true, write: true },
+                { name: 'landingpages', read: true, write: true },
+                { name: 'tools', read: true, write: true },
+                { name:'aiads', read:true, write:true}
+            ],
+        }
         const userDoc = await client.db(process.env.MONGO_DB).collection('pagoda_users').findOne({ email: user })
 
         const userObject = {

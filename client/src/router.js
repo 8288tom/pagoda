@@ -1,14 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import CallbackView from './views/CallBackView.vue';
-import userManager from '@/auth';
 import HomeView from '@/views/HomeView.vue';
 import TabView from './views/TabsView.vue';
 import AdminView from './views/AdminView.vue';
 import LoginView from './views/LoginView.vue';
 import NotFound from './views/404View.vue'
-import store from './store';
 import { isLocalDevEnv } from './utils/generalUtilities';
-import { showNotification } from './utils/contextHelpers';
 const routes = [
   {
     path: '/',
@@ -97,23 +94,26 @@ router.beforeEach(async (to, from, next) => {
     localStorage.removeItem('openTabs')
   }
 
+
+  // code block below is commented out to discard SSO flow for demo
   try {
     if (isLocalDevEnv()) {
-      return next(); // discard SSO flow when in dev, backend should run on localhost:4000
+      return next(); 
     }
-    const user = await userManager.getUser();
-    if (user) {
-      console.log('Is token expired:', user.expired)
-      if (Object.keys(store.state.user).length === 0) store.commit('setUser', user)
-      if (user.expired) userManager.signinRedirect()
-      next();
-    } else {
-      await userManager.signinRedirect();
-    }
+    else next();
+    // const user = await userManager.getUser();
+    // if (user) {
+    //   console.log('Is token expired:', user.expired)
+    //   if (Object.keys(store.state.user).length === 0) store.commit('setUser', user)
+    //   if (user.expired) userManager.signinRedirect()
+    //   next();
+    // } else {
+    //   await userManager.signinRedirect();
+    // }
   } catch (e) {
     console.error('Authentication error:', e);
-    next('/login');
-    showNotification(store, false, undefined, e.message)
+    // next('/login');
+    // showNotification(store, false, undefined, e.message)
   }
 });
 
