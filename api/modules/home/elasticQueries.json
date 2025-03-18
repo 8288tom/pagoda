@@ -1,0 +1,152 @@
+{
+    "rendersByCompany":
+    {
+        "aggs": {
+          "0": {
+            "terms": {
+              "field": "company",
+              "order": {
+                "1": "desc"
+              },
+              "size": 5
+            },
+            "aggs": {
+              "1": {
+                "cardinality": {
+                  "field": "request_id"
+                }
+              }
+            }
+          }
+        },
+        "size": 0,
+        "fields": [
+          {
+            "field": "@timestamp",
+            "format": "date_time"
+          }
+        ],
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "query_string": {
+                  "query": "app_component:\"render\" AND response_status:\"Success\" AND NOT is_preview:true AND NOT company:\"Idomoo\" AND NOT company:\"Idom00\" AND api_mode:normal AND NOT statistics_id:supportmonitor AND NOT output_formats:\"JPG\" AND NOT company:\"Idomoo\" AND NOT company:\"idomoo\"",
+                  "analyze_wildcard": true
+                }
+              }
+            ],
+            "filter": [
+              {
+                "range": {
+                  "@timestamp": {
+                    "format": "strict_date_optional_time",
+                      "gte": "now-24h",
+                      "lte": "now"
+                  }
+                }
+              }
+            ],
+            "should": [],
+            "must_not": []
+          }
+        }
+    },
+    "totalRenders":{
+      "aggs": {
+        "0": {
+          "cardinality": {
+            "field": "request_id"
+          }
+        }
+      },
+      "size": 0,
+      "fields": [
+        {
+          "field": "@timestamp",
+          "format": "date_time"
+        }
+      ],
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "query_string": {
+                "query": "app_component:\"render\" AND response_status:\"Success\" AND NOT is_preview:true AND NOT company:\"Idomoo\" AND NOT company:\"Idom00\" AND NOT (api_mode:preview OR api_mode:developer OR api_mode:regression) AND NOT statistics_id:supportmonitor AND NOT output_formats:\"JPG\" AND NOT company:\"Idomoo\" AND NOT company:\"idomoo\"",
+                "analyze_wildcard": true
+              }
+            }
+          ],
+          "filter": [
+            {
+              "range": {
+                "@timestamp": {
+                  "format": "strict_date_optional_time",
+             "gte": "now-24h",
+                    "lte": "now"
+                }
+              }
+            }
+          ],
+          "should": [],
+          "must_not": []
+        }
+      }
+    },
+    "topBatches":{
+      "aggs": {
+        "0": {
+          "terms": {
+            "field": "company",
+            "order": {
+              "1": "desc"
+            },
+            "size": 5,
+            "shard_size": 25
+          },
+          "aggs": {
+            "1": {
+              "cardinality": {
+                "field": "request_id"
+              }
+            }
+          }
+        }
+      },
+      "size": 0,
+      "fields": [
+        {
+          "field": "@timestamp",
+          "format": "date_time"
+        }
+      ],
+      "_source": {
+        "excludes": []
+      },
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "query_string": {
+                "query": "app_component:\"render\" AND response_status:\"Success\" AND NOT is_preview:true AND NOT company:\"Idomoo\" AND NOT company:\"Idom00\" AND api_mode:dataloader AND NOT statistics_id:supportmonitor AND NOT output_formats:\"JPG\" AND NOT company:\"Idomoo\" AND NOT company:\"idomoo\" AND api_mode:dataloader",
+                "analyze_wildcard": true
+              }
+            }
+          ],
+          "filter": [
+            {
+              "range": {
+                "@timestamp": {
+                  "format": "strict_date_optional_time",
+                        "gte": "now-24h",
+                    "lte": "now"
+                }
+              }
+            }
+          ],
+          "should": [],
+          "must_not": []
+        }
+      }
+    }
+}
