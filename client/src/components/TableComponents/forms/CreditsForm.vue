@@ -95,7 +95,7 @@ export default {
             } catch (e) {
                 console.error("Error submitting form", e)
                 isLoading.value = false;
-                showNotification(store, false, undefined, `Error submitting form ${e.message}`)
+                showNotification(store, false, undefined, `${e.message}`)
             }
         }
 

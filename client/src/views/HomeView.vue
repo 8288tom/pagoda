@@ -201,6 +201,9 @@ const shouldRenderEnvTitle = computed(() => true)
 .charts-container {
   justify-content: center;
   gap: 100px;
+  height: 60dvh;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .collection-container {

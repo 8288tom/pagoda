@@ -1,30 +1,20 @@
-# API
+Pagoda
 
-## Project setup
-```
-npm install
-```
+Overview
 
-### Hot-reloads for development, runs locally on localhost:4000
-```
-npm run start 
-```
+This project is a comprehensive internal management system used in production at my previous company. It provides tools to manage users, projects, assets, internal workflows, and user permissions.
 
-### Guidelines
-GQL Server:
-Dev: dev-server.js
-Prod: index.js
+Tech Stack
 
-During development the server will run on node server from the dev-server.js file.
-Context for the user is created manually in that same file.
+Authentication: OIDC for SSO using JWT tokens (handled in an authorizer Lambda)
 
-For prod, we are using the index.js file to export the handler for the lambda, context is built differently to dev.
+Backend: Apollo GraphQL running in a Lambda function
 
-ENV Variables:
-Dev: .env-dev
-Prod: Lambda env variables configured on serverless.yml.
+Frontend: Vue.js with KendoUI
 
-### Deployment
+I developed, designed, architected, and deployed this entire project solo over 8 months.
 
-Deployments are done via serverlessframework using serverless.yml.
-Talk to developers to get the serverless.yml if it's not available in the repo.
+Live Demo
+
+🔗 Demo Link
+
