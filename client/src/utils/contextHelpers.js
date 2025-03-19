@@ -16,6 +16,8 @@ async function initApp(store, apolloClient, query) {
             : null
         store.commit('setPermissions', data.initApp.user);
         store.commit('setCollectionCount', data.initApp.docCount)
+        store.commit('setUser', { profile: { email: "demo-email@demo.com" } })
+
         betaFeaturesOptions.features = data.initApp.betaFeatures;
     } catch (e) {
         console.error(e)

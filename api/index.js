@@ -26,15 +26,15 @@ const context = async ({ event }) => {
                 { name: 'outputconfigs', read: true, write: true },
                 { name: 'landingpages', read: true, write: true },
                 { name: 'tools', read: true, write: true },
-                { name:'aiads', read:true, write:true}
+                { name: 'aiads', read: true, write: true }
             ],
         }
-        const userDoc = await client.db(process.env.MONGO_DB).collection('pagoda_users').findOne({ email: user })
+        // const userDoc = await client.db(process.env.MONGO_DB).collection('pagoda_users').findOne({ email: user })
 
         const userObject = {
-            email: userDoc.email,
-            isAdmin: userDoc.isAdmin,
-            permissions: userDoc.permissions
+            email: user.email,
+            isAdmin: user.isAdmin,
+            permissions: user.permissions
         }
         return { user: userObject };
     } catch (e) {
@@ -46,7 +46,7 @@ const context = async ({ event }) => {
 const dataSources = () => ({
     CountersAPI: new CountersAPI,
     MongoDB: new MongoDB(client),
-    Elastic: new Elastic,
+    // Elastic: new Elastic,
     ExternalAPI: new ExternalAPI,
     MetadataAPI: new MetadataAPI,
 })
@@ -55,7 +55,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     dataSources,
-    debug: false,
+    debug: true,
     context,
     introspection: true,
     playground: false,

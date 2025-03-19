@@ -26,7 +26,7 @@ const context = () => {
                 { name: 'outputconfigs', read: true, write: true },
                 { name: 'landingpages', read: true, write: true },
                 { name: 'tools', read: true, write: true },
-                { name:'aiads', read:true, write:true}
+                { name: 'aiads', read: true, write: true }
             ],
         }
     }
@@ -36,7 +36,7 @@ let mongoDBInstance;
 const dataSources = () => ({
     CountersAPI: new CountersAPI,
     MongoDB: mongoDBInstance || (mongoDBInstance = new MongoDB(client)),
-    Elastic: new Elastic(),
+    // Elastic: new Elastic(),
     MetadataAPI: new MetadataAPI,
     ExternalAPI: new ExternalAPI
 })
