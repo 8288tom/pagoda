@@ -1,16 +1,20 @@
-# Pagoda 2.0
+Pagoda
 
+Overview
 
-### Development
+This project is a comprehensive internal management system used in production at my previous company. It provides tools to manage users, projects, assets, internal workflows, and user permissions.
 
-More information inside /client & /api readmes.
+Tech Stack
 
+Authentication: OIDC for SSO using JWT tokens (handled in an authorizer Lambda)
 
-### Deployment
+Backend: Apollo GraphQL running in a Lambda function
 
-Deployment is done using Serverless framework using the following command:
+Frontend: Vue.js with KendoUI
 
-``` 
-sls deploy
-```
-Talk to one of the devs to recieve the serverless yml files for this repo.
+I developed, designed, architected, and deployed this entire project solo over 8 months.
+
+Live Demo
+
+🔗 Demo Link
+
