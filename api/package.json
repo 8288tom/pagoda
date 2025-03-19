@@ -27,6 +27,7 @@
 		"jwks-rsa": "^3.1.0",
 		"mongodb": "^6.7.0",
 		"node-fetch": "^2.7.0",
+		"nodemon": "^3.1.9",
 		"openai": "^4.75.0",
 		"uuid": "^8.3.2"
 	}

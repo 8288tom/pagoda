@@ -15,6 +15,7 @@ const resolvers = {
         },
         getElasticResults: async (_, args, { dataSources, user }) => {
             if (!user.email) throw new ApolloError('User not found', 400);
+            throw new ApolloError("Elastic is disabled for demo", 403)
             const { env } = args;
 
             if (env.toLowerCase() === 'us') {
