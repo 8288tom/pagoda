@@ -20,7 +20,7 @@ const popupMessageType = computed(() => store.state.notificationType);
 
 <style>
 :root {
-  font-family: "Gill Sans MT", Helvetica, sans-serif;
+  font-family: Helvetica, "Gill Sans MT", sans-serif;
 
   /* custom variables */
   --navbar-width: 50px;
