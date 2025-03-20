@@ -4,6 +4,8 @@
 
 This project is a comprehensive internal management system used in production at my previous company. It provides tools to manage users, projects, assets, internal workflows, and user permissions.
 
+The app is not designed to be used on a phone, therefore it was not programmed to be responsive
+
 ### Tech Stack
 
 - **Authentication**: OIDC for SSO using JWT tokens (handled in an authorizer Lambda)
