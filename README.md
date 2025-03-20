@@ -16,5 +16,8 @@ It went through extensive QA testing which found 2 minor bugs.
 ## Live Demo
 For the purpose of this demo some features have been disabled, SSO configuration included (code is still intact just commented out where needed).
 
+In production this app is used with collections of more than 50K documents, for the purpose of this demo there are only 200-400 documents in the database.
+
+
 Disclaimer: No real data was used, no password were compromised in the making of this demo.
 [🔗 Demo Link](https://pagoda.shkoodsolutions.com/)
