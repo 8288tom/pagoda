@@ -10,8 +10,11 @@ This project is a comprehensive internal management system used in production at
 - **Backend**: Apollo GraphQL running in a Lambda function
 - **Frontend**: Vue.js with KendoUI
 
-I developed, designed, architected, and deployed this entire project solo over 8 months.
+I developed, designed, architected, and deployed this entire project solo over 5 months.
+It went through extensive QA testing which found 2 minor bugs.
 
 ## Live Demo
+For the purpose of this demo some features have been disabled, SSO configuration included (code is still intact just commented out where needed).
 
-[🔗 Demo Link](https://main.d1xikp8bx8bicx.amplifyapp.com/)
+Disclaimer: No real data was used, no password were compromised in the making of this demo.
+[🔗 Demo Link](https://pagoda.shkoodsolutions.com/)
