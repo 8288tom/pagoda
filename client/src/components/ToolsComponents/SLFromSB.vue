@@ -4,7 +4,7 @@
         <CardSubtitle>Enter Storyboard ID, click on Get Scene Libraries and you'll get all the Scene Libraries from the
             Storyboard as comma spereated numbers</CardSubtitle>
         <CardBody class="card-body flex">
-            <KInput v-model="storyboardId" :label="'Storyboard ID'" :placeholder="'150197'" class="input"></KInput>
+            <KInput v-model="storyboardId" :label="'Storyboard ID'" :placeholder="'138197'" class="input"></KInput>
             <KButton @click="getSceneLibraryIds" :size="'medium'" :fill-mode="'outline'">Get Scene
                 Libraries</KButton>
             <p v-if="errorMessage"> {{ errorMessage }}</p>
