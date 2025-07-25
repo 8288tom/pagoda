@@ -28,19 +28,26 @@ export default {
     },
     computed: {
         donutData() {
-            if (this.elasticData) {
-                const companyLabels = this.elasticData.map(item => item.name)
-                const renderValues = this.elasticData.map(item => item.val)
-                return {
-                    labels: companyLabels,
-                    datasets: [{
-                        data: renderValues,
-                        backgroundColor: this.colorArray
-                    }],
-
-                }
+            return{
+                labels:['Company A','Company B','Company C','Company D','Company E'],
+                datasets:[{
+                    data:['1001', '20000','30','150000','131245'],
+                    backgroundColor:this.colorArray
+                }]
             }
-            else return false
+            // if (this.elasticData) {
+            //     const companyLabels = this.elasticData.map(item => item.name)
+            //     const renderValues = this.elasticData.map(item => item.val)
+            //     return {
+            //         labels: companyLabels,
+            //         datasets: [{
+            //             data: renderValues,
+            //             backgroundColor: this.colorArray
+            //         }],
+
+            //     }
+            // }
+            // else return false
         }
     },
     created() {

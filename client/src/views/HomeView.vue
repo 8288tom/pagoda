@@ -38,6 +38,8 @@
           </div>
         </Card>
       </template>
+      <!-- 
+      
       <Card>
         <CardHeader>
           <h3>Since this is a Demo, I cannot show real environment data, therefore, I've captured a short gif showing what this component looked like in Production:
@@ -46,10 +48,8 @@
        <CardBody>
           <img  class="gif" src="/elastic_example_gif.gif" alt="example_gif">
        </CardBody>
-        <GitSvgLink style="margin:auto;" text="You can see the frontend code by clicking the logo! ---->" link="https://github.com/8288tom/pagoda/blob/main/client/src/views/HomeView.vue"></GitSvgLink>
-      </Card>
-
-      
+         <GitSvgLink style="margin:auto;" text="You can see the frontend code by clicking the logo! 
+      </Card>-->
     </div>
 
   </div>
@@ -67,7 +67,7 @@ import DonutChart from "@/components/HomeComponents/DonutChart.vue";
 import PieChart from "@/components/HomeComponents/PieChart.vue";
 import queries from "@/utils/queries";
 import { initApp } from "@/utils/contextHelpers";
-import GitSvgLink from "@/components/misc/GitSvgLink.vue";
+// import GitSvgLink from "@/components/misc/GitSvgLink.vue";
 import { useStore } from "vuex";
 import {
   thumbnailsLeftIcon,
@@ -171,7 +171,9 @@ function totalRenders(env) {
 }
 
 function shouldRenderCharts(env) {
-  return env === "US" ? !!elasticResultUS.value?.US : !!elasticResultEU.value?.EU;
+  console.log(env)
+  return true
+  // return env === "US" ? !!elasticResultUS.value?.US : !!elasticResultEU.value?.EU;
 }
 
 const collectionCount = computed(() => store.state.docCount);

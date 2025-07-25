@@ -29,18 +29,24 @@ export default {
     },
     computed: {
         pieData() {
-            if (this.elasticData) {
-                const companyLabels = this.elasticData.map(item => item.name)
-                const renderValues = this.elasticData.map(item => item.val)
-                return {
-                    labels: companyLabels,
-                    datasets: [{
-                        data: renderValues,
-                        backgroundColor: this.colorArray
-                    }],
-                }
-            }
-            else return false
+                 return{
+                labels:['Company F','Company G','Company H','Company I','Company J'],
+                datasets:[{
+                    data:['11001', '400000','123470','870000','134345'],
+                    backgroundColor:this.colorArray
+                }]}
+            // if (this.elasticData) {
+            //     const companyLabels = this.elasticData.map(item => item.name)
+            //     const renderValues = this.elasticData.map(item => item.val)
+            //     return {
+            //         labels: companyLabels,
+            //         datasets: [{
+            //             data: renderValues,
+            //             backgroundColor: this.colorArray
+            //         }],
+            //     }
+            // }
+            // else return false
 
         }
     },
