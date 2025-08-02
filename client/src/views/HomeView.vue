@@ -17,10 +17,10 @@
       </Card>
     </div>
 
-    <h2 v-if="shouldRenderEnvTitle">Environment Overview</h2>
+    <h2 v-if="!isLoading">Environment Overview</h2>
     <div class="charts-container flex">
       <template v-for="env in ['US', 'EU']">
-        <Card v-if="shouldRenderCharts(env)" :key="env" :type="'success'" class="shadow">
+        <Card v-if="!isLoading" :key="env" :type="'success'" class="shadow">
           <div>
             <idmToolTip :text="tooltipMessage" :position="'left'" class="tooltip" :onHover="true" />
             <h1>{{ env }}</h1>
@@ -170,11 +170,11 @@ function totalRenders(env) {
   return env === "US" ? totalRendersUS.value : totalRendersEU.value;
 }
 
-function shouldRenderCharts(env) {
-  console.log(env)
-  return true
+//function shouldRenderCharts(env) {
+ // console.log(env)
+  //return true
   // return env === "US" ? !!elasticResultUS.value?.US : !!elasticResultEU.value?.EU;
-}
+//}
 
 const collectionCount = computed(() => store.state.docCount);
 const collectionsItems = computed(() => {
@@ -192,7 +192,7 @@ const formattedCollectionCount = computed(() => {
 });
 
 const shouldRenderCollections = computed(() => collectionsItems.value.length > 0);
-const shouldRenderEnvTitle = computed(() => true)
+//const shouldRenderEnvTitle = computed(() => true)
 </script>
 
 <style scoped>
@@ -203,7 +203,6 @@ const shouldRenderEnvTitle = computed(() => true)
 .charts-container {
   justify-content: center;
   gap: 100px;
-  height: 65dvh;
   box-sizing: border-box;
   margin-bottom: 20px;
 }
